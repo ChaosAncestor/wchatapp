@@ -1,0 +1,52 @@
+<!--pages/weather/weather.wxml-->
+<view class="contaier">
+  <view class="seachs clearfix">
+    <view class="seach clearfix">
+      <input class="inps" bindinput='synchroValue' type="text" placeholder="请输入城市"></input>
+      <button class="find-inps" size="mini" bindtap="check">查询</button>
+    </view>
+  </view>
+  <view class="centext clearfix">
+    <view class="content1 clearfix">
+      <text class="city">{{citys}}</text>
+    </view>
+    <view class="content2">
+      <image class="imgs" src="https://cdn.heweather.com/cond_icon/{{code}}.png"></image>
+    </view>
+   <view class="content3"> 
+   <text class="weathers">温度:{{tmp}}°</text>
+   <text class="weathers">{{datapack}}</text>
+    <text class="weathers">{{txt}}</text>
+   </view>
+   <view class="abs">
+   <view>体感</view>
+   <view>{{fl}}°</view>
+   </view>
+  </view>
+  <view class="botts clearfix">
+    <view>逐时预报</view>
+    <view class="carousel clearfix">
+      <scroll-view class='scrollContainer' scroll-x>
+        <view class="float" wx:for="{{hourlys}}" wx:key="key">
+          <text>{{item.time}}时</text>
+          <image class="img-t1" src="https://cdn.heweather.com/cond_icon/{{item.code}}.png"></image>
+          <text>{{item.txt}}</text>
+        </view>
+      </scroll-view>
+    </view>
+    <view>天气预报</view>
+    <view>
+       <scroll-view scroll-y class="demo">
+          <view wx:for='{{dailys}}' wx:key="key">
+              <view class="forecast">
+              <view class="forecast-t"><text>{{item.date}}</text></view>
+              <view class="forecast-t"><image class="img-forecast" src="https://cdn.heweather.com/cond_icon/{{item.code}}.png"></image></view>
+              <view class="forecast-t"><text>{{item.txt1}}-{{item.txt2}}</text></view>
+              <view class="forecast-t"><text>{{item.tmp1}}°-{{item.tmp2}}°</text></view>
+              </view>
+          </view>
+
+        </scroll-view>
+    </view>
+  </view>
+</view>
